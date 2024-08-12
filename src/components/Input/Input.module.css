@@ -1,0 +1,16 @@
+.input {
+  font-family: var(--primary-font);
+  border: var(--input-border);
+  border-radius: var(--input-border-radius);
+  font-weight: 400;
+  font-size: 17px;
+  padding: 20px;
+}
+
+.input::placeholder {
+  color: var(--input-placeholder-text);
+}
+
+.input:focus {
+  outline: var(--inpur-outline);
+}
