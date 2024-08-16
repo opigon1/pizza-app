@@ -1,13 +1,11 @@
-import Button from './components/Button/Button';
-import Input from './components/Input/Input';
+import { FC, ReactNode } from 'react';
 
-function App() {
-  return (
-    <>
-      <Button appearence='large'>Зарегистрироваться</Button>
-      <Input type='email' placeholder='Email' name='email' />
-    </>
-  );
+interface IProps {
+  children: ReactNode;
 }
+
+const App: FC<IProps> = ({ children }) => {
+  return <main>{children}</main>;
+};
 
 export default App;

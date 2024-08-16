@@ -1,14 +1,11 @@
 :root {
   --primary-font: 'Open Sans', sans-serif;
   --primary-color: #fe724c;
-  --primary-color-hover: #f0562c;
-
+  --primary-color-hover: #be3203;
   --background-color: #ffffff;
 
   --main-text-color: #000;
   --secondary-text-color: #5b5b5e;
-
-  --rating-color: #ffc529;
 
   --input-placeholder-text: #9aa0b4;
   --input-border: 1px solid #eee;
@@ -32,4 +29,5 @@
 body {
   box-sizing: border-box;
   font-family: var(--primary-font);
+  margin: 0;
 }

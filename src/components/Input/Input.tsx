@@ -1,4 +1,4 @@
-import { forwardRef, useEffect } from 'react';
+import { forwardRef } from 'react';
 import s from './Input.module.css';
 import cn from 'classnames';
 import { IInputProps } from './Input.props';

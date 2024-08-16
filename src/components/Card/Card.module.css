@@ -1,0 +1,76 @@
+.card {
+  position: relative;
+  max-width: 323px;
+  width: 100%;
+  list-style: none;
+  border-radius: 15px;
+  box-shadow: 18px 18px 36px 0 rgba(211, 209, 216, 0.25);
+}
+
+.price {
+  padding: 15px 15px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 121px;
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  font-size: 20px;
+  line-height: 1px;
+  font-weight: 400;
+  color: var(--main-text-color);
+}
+
+.price::after {
+  content: ' ₽';
+  color: var(--primary-color);
+}
+
+.rating {
+  position: absolute;
+  bottom: 75px;
+  left: 10px;
+  border-radius: 121px;
+  background-color: var(--background-color);
+  padding: 9px 15px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 14px;
+  box-shadow: 0 6px 24px 0 rgba(254, 114, 76, 0.2);
+}
+
+.card_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.card_image {
+  max-width: 323px;
+  border-radius: 15px;
+}
+
+.card_name {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 25px;
+  margin-bottom: 0;
+  padding-left: 13px;
+}
+
+.card_description {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 13px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 15px;
+  color: var(--secondary-text-color);
+}
