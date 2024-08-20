@@ -4,13 +4,22 @@ import s from './CardList.module.css';
 import { IProduct } from '../../interfaces/Propduct.interface';
 import axios from 'axios';
 import { BASE_URL } from '../../helper/api';
+import Preloader from '../Preloader/Preloader';
 
 const CardList = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getProducts = async () => {
-    const { data } = await axios.get(`${BASE_URL}/products`);
-    setProducts(data);
+    try {
+      setIsLoading(true);
+      const { data } = await axios.get(`${BASE_URL}/products`);
+      setProducts(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -19,7 +28,7 @@ const CardList = () => {
 
   return (
     <ul className={s.card_list}>
-      {products.map((p) => (
+      {!isLoading && products.map((p) => (
         <Card
           name={p.name}
           key={p.id}
@@ -29,6 +38,7 @@ const CardList = () => {
           rating={p.rating}
         ></Card>
       ))}
+      {isLoading && <Preloader />}
     </ul>
   );
 };
