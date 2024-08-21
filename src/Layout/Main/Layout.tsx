@@ -1,11 +1,11 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import cn from 'classnames';
 import s from './Layout.module.css';
-import avatar from '../assets/avatar.png';
-import exitIcon from '../assets/exit-icon.svg';
-import cartIcon from '../assets/cart-icon.svg';
-import menuIcon from '../assets/menu-icon.svg';
-import Button from '../components/Button/Button';
+import avatar from '../../assets/avatar.png';
+import exitIcon from '../../assets/exit-icon.svg';
+import cartIcon from '../../assets/cart-icon.svg';
+import menuIcon from '../../assets/menu-icon.svg';
+import Button from '../../components/Button/Button';
 
 const Layout = () => {
   return (

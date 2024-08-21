@@ -7,6 +7,11 @@
   box-shadow: 18px 18px 36px 0 rgba(211, 209, 216, 0.25);
 }
 
+.card_link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .price {
   padding: 15px 15px;
   position: absolute;

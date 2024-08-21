@@ -6,3 +6,10 @@
   gap: 35px 20px;
   grid-template-columns: repeat(auto-fit, minmax(323px, 1fr));
 }
+
+.error {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 50px;
+  color: red;
+}

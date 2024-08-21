@@ -1,19 +1,9 @@
-import CardList from '../../components/CardList/CardList';
-import Heading from '../../components/Heading/Heading';
-import Search from '../../components/Search/Search';
-import s from './Product.module.css';
+import { useLoaderData } from 'react-router-dom';
+import { IProduct } from '../../interfaces/Propduct.interface';
 
 const Product = () => {
-  return (
-    <div className={s.content}>
-      <div className={s.content_heading}>
-        {' '}
-        <Heading>Меню</Heading>
-        <Search />
-      </div>
-      <CardList />
-    </div>
-  );
+  const data = useLoaderData() as IProduct;
+  return <div>Product: {data.name}</div>;
 };
 
 export default Product;

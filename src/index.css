@@ -7,6 +7,7 @@
   --main-text-color: #000;
   --secondary-text-color: #5b5b5e;
 
+  --input-color: #c4c4c4;
   --input-placeholder-text: #9aa0b4;
   --input-border: 1px solid #eee;
   --inpur-outline: 1px solid var(--primary-color);
@@ -24,6 +25,8 @@
 
   --button-large-width-size: 248px;
   --button-large-height-size: 60px;
+
+  --border-color: #d4d6e0;
 }
 
 body {
