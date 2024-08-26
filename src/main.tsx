@@ -11,6 +11,8 @@ import { getProductById } from './helper/api.ts';
 import AuthLayout from './Layout/Auth/AuthLayout.tsx';
 import Login from './pages/Login/Login.tsx';
 import Register from './pages/Register/Register.tsx';
+import { Provider } from 'react-redux';
+import { store } from './store/store.ts';
 
 const router = createBrowserRouter([
   {
@@ -56,8 +58,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App>
-      <RouterProvider router={router}></RouterProvider>
-    </App>
+    <Provider store={store}>
+      <App>
+        <RouterProvider router={router}></RouterProvider>
+      </App>
+    </Provider>
   </StrictMode>
 );
