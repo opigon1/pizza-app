@@ -44,3 +44,10 @@
   flex-direction: column;
   gap: 4px;
 }
+
+.error {
+  margin: 0 0 5px;
+  color: white;
+  background-color: rgb(240, 64, 64);
+  padding: 10px;
+}

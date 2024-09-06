@@ -1,3 +1,4 @@
 export interface IUser {
-    jwt: string | null
+    jwt: string | null,
+    loginError?: string
 }

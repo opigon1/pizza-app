@@ -13,11 +13,16 @@ import Login from './pages/Login/Login.tsx';
 import Register from './pages/Register/Register.tsx';
 import { Provider } from 'react-redux';
 import { store } from './store/store.ts';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute.tsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
     children: [
       {
         path: '/',

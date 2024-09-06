@@ -6,8 +6,12 @@ import exitIcon from '../../assets/exit-icon.svg';
 import cartIcon from '../../assets/cart-icon.svg';
 import menuIcon from '../../assets/menu-icon.svg';
 import Button from '../../components/Button/Button';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../store/store';
+import { removeJwt } from '../../store/user.slice';
 
 const Layout = () => {
+  const dispatch = useDispatch<AppDispatch>()
   return (
     <>
       <div className={s.layout}>
@@ -49,7 +53,7 @@ const Layout = () => {
               </NavLink>
             </li>
           </ul>
-          <Button className={s.exit_button} appearence='small'>
+          <Button className={s.exit_button} appearence='small' onClick={() => dispatch(removeJwt())}>
             <img src={exitIcon} alt='Выйти из профиля' />
             Выйти
           </Button>
