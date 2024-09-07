@@ -1,12 +1,24 @@
-import { PayloadAction, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { IUser } from '../interfaces/User.interface';
-import { handeleLogin } from '../helper/api';
+import { getUserProfile, handeleLogin } from '../helper/api';
 import { AxiosError } from 'axios';
+import { IProfile } from '../interfaces/Propfile.interface';
+import { RootState } from './store';
 
 const initialState: IUser = {
   jwt: localStorage.getItem('jwt') || null,
   loginError: '',
 };
+
+export const getProfile = createAsyncThunk<
+  IProfile,
+  void,
+  { state: RootState }
+>('user/profile', async (_, thunkApi) => {
+  const jwt = thunkApi.getState().user.jwt;
+  if (!jwt) return;
+  return await getUserProfile(jwt);
+});
 
 export const login = createAsyncThunk(
   'user/login',
@@ -31,7 +43,7 @@ const userSlice = createSlice({
     },
     resetErrorMessage: (state) => {
       state.loginError = undefined;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
@@ -40,7 +52,10 @@ const userSlice = createSlice({
     });
     builder.addCase(login.rejected, (state, action) => {
       state.loginError = action.error.message;
-    })
+    });
+    builder.addCase(getProfile.fulfilled, (state, action) => {
+      state.profile = action.payload;
+    });
   },
 });
 

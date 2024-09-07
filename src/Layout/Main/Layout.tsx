@@ -6,20 +6,27 @@ import exitIcon from '../../assets/exit-icon.svg';
 import cartIcon from '../../assets/cart-icon.svg';
 import menuIcon from '../../assets/menu-icon.svg';
 import Button from '../../components/Button/Button';
-import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../store/store';
-import { removeJwt } from '../../store/user.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
+import { getProfile, removeJwt } from '../../store/user.slice';
+import { useEffect } from 'react';
 
 const Layout = () => {
   const dispatch = useDispatch<AppDispatch>()
+  const profile = useSelector((state: RootState) => state.user.profile)
+
+  useEffect(() => {
+    dispatch(getProfile())
+  }, [dispatch])
+
   return (
     <>
       <div className={s.layout}>
         <aside className={s.aside}>
           <div className={s.profile}>
             <img className={s.avatar} src={avatar} alt='Аватар пользователя' />
-            <h2 className={s.name}>Степан Рындин</h2>
-            <p className={s.email}>step.rindin@yadnex.ru</p>
+            <h2 className={s.name}>{profile?.name}</h2>
+            <p className={s.email}>{profile?.email}</p>
           </div>
           <ul className={s.nav}>
             <li>

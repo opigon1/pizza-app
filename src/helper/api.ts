@@ -12,11 +12,20 @@ export const getProductById = async (productId: string) => {
   return data;
 };
 
-export const handeleLogin = async ( email: string, password: string) => {
+export const handeleLogin = async (email: string, password: string) => {
   const { data } = await axios.post(`${BASE_URL}/auth/login`, {
     email,
     password,
   });
 
   return data;
+};
+
+export const getUserProfile = async (jwt: string) => {
+  const { data } = await axios.get(`${BASE_URL}/user/profile`, {
+    headers: {
+      Authorization: `Bearer ${jwt}`,
+    },
+  });
+  return data
 };
