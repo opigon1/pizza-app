@@ -21,6 +21,16 @@ export const handeleLogin = async (email: string, password: string) => {
   return data;
 };
 
+export const handleRegister = async (email: string, password: string, name: string) => {
+  const {data} = await axios.post(`${BASE_URL}/auth/register`, {
+    email,
+    password,
+    name
+  })
+
+  return data
+}
+
 export const getUserProfile = async (jwt: string) => {
   const { data } = await axios.get(`${BASE_URL}/user/profile`, {
     headers: {
