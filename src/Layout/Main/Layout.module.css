@@ -74,3 +74,17 @@
   width: 100%;
   background-color: var(--product-backgroud-color);
 }
+
+.cart_item_count {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  background-color: var(--primary-color);
+  margin-left: 10px;
+  padding: 1px;
+  border-radius: 50%;
+}

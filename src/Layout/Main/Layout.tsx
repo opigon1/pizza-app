@@ -12,12 +12,13 @@ import { getProfile, removeJwt } from '../../store/user.slice';
 import { useEffect } from 'react';
 
 const Layout = () => {
-  const dispatch = useDispatch<AppDispatch>()
-  const profile = useSelector((state: RootState) => state.user.profile)
+  const dispatch = useDispatch<AppDispatch>();
+  const profile = useSelector((state: RootState) => state.user.profile);
+  const cartItems = useSelector((state: RootState) => state.cart.items);
 
   useEffect(() => {
-    dispatch(getProfile())
-  }, [dispatch])
+    dispatch(getProfile());
+  }, [dispatch]);
 
   return (
     <>
@@ -38,11 +39,7 @@ const Layout = () => {
                   })
                 }
               >
-                <img
-                  className={s.nav_icon}
-                  src={menuIcon}
-                  alt='Иконка корзины'
-                />
+                <img className={s.nav_icon} src={menuIcon} alt='Иконка меню' />
                 Главная
               </NavLink>
             </li>
@@ -55,12 +52,25 @@ const Layout = () => {
                   })
                 }
               >
-                <img className={s.nav_icon} src={cartIcon} alt='Иконка меню' />
+                <img
+                  className={s.nav_icon}
+                  src={cartIcon}
+                  alt='Иконка корзины'
+                />
                 Корзина
+                {cartItems.length > 0 && (
+                  <span className={s.cart_item_count}>
+                    {cartItems.reduce((acc, item) => acc + item.count, 0)}
+                  </span>
+                )}
               </NavLink>
             </li>
           </ul>
-          <Button className={s.exit_button} appearence='small' onClick={() => dispatch(removeJwt())}>
+          <Button
+            className={s.exit_button}
+            appearence='small'
+            onClick={() => dispatch(removeJwt())}
+          >
             <img src={exitIcon} alt='Выйти из профиля' />
             Выйти
           </Button>
