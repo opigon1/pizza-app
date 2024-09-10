@@ -7,6 +7,16 @@ export const getAllPropduct = async () => {
   return data;
 };
 
+export const getProductByName = async (name: string) => {
+  const { data } = await axios.get(`${BASE_URL}/products`, {
+    params: {
+      name,
+    },
+  });
+
+  return data;
+};
+
 export const getProductById = async (productId: string) => {
   const { data } = await axios.get(`${BASE_URL}/products/${productId}`);
   return data;
@@ -21,15 +31,19 @@ export const handeleLogin = async (email: string, password: string) => {
   return data;
 };
 
-export const handleRegister = async (email: string, password: string, name: string) => {
-  const {data} = await axios.post(`${BASE_URL}/auth/register`, {
+export const handleRegister = async (
+  email: string,
+  password: string,
+  name: string
+) => {
+  const { data } = await axios.post(`${BASE_URL}/auth/register`, {
     email,
     password,
-    name
-  })
+    name,
+  });
 
-  return data
-}
+  return data;
+};
 
 export const getUserProfile = async (jwt: string) => {
   const { data } = await axios.get(`${BASE_URL}/user/profile`, {
@@ -37,5 +51,5 @@ export const getUserProfile = async (jwt: string) => {
       Authorization: `Bearer ${jwt}`,
     },
   });
-  return data
+  return data;
 };
