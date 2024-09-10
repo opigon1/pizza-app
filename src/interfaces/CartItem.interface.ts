@@ -1,4 +1,4 @@
 export interface ICartItem {
-    id: string;
+    id: number;
     count: number;
 }

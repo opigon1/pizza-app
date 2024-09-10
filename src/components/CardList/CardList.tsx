@@ -46,10 +46,13 @@ const CardList = ({ filterByName }: ICardListProps) => {
               rating={p.rating}
             ></Card>
           ))}
-        {isLoading && <Preloader />}
+
         {error && <p className={s.error}>{error}</p>}
       </ul>
-      {products.length == 0 && <p className={s.error}>Ничего не найдено</p>}
+      {isLoading && <Preloader />}
+      {!isLoading && products.length == 0 && (
+        <p className={s.error}>Ничего не найдено</p>
+      )}
     </>
   );
 };
