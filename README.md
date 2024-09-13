@@ -1,50 +1,67 @@
-# React + TypeScript + Vite
+# Pizza Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<img src='./src//assets//promo.png'>
+Учебный проект магазина пиццы, созданный для изучения работы с Redux Toolkit (RTK) и Axios. В проекте реализованы основные функции интернет-магазина, включая возможность оформления заказа, авторизацию пользователей и корзину для покупок.
 
-Currently, two official plugins are available:
+## Функциональность
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Главная страница**: Отображение доступных пицц с поиском.
+- **Корзина**: Добавление/удаление товаров, редактирование количества.
+- **Авторизация**: Вход и регистрация пользователей.
+- **Оформление заказа**: Оформление и подтверждение заказа с использованием данных корзины.
+- **Загрузка данных**: Использование Axios для взаимодействия с API.
+- **Состояние приложения**: Управление состоянием с помощью Redux Toolkit (RTK).
 
-## Expanding the ESLint configuration
+## Использованные технологии
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: Для создания пользовательского интерфейса.
+- **Redux Toolkit (RTK)**: Для управления состоянием приложения.
+- **Axios**: Для работы с запросами к API.
+- **React Router**: Для управления маршрутами.
+- **TypeScript**: Для типизации проекта.
+- **HTML/CSS**: Для стилизации страниц.
 
-- Configure the top-level `parserOptions` property like this:
+## Установка и запуск
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Склонируйте репозиторий:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+   ```bash
+   git clone https://github.com/opigon1/pizza-app.git
+   ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+2. Перейдите в папку с проектом:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```bash
+   cd pizza-app
+   ```
+
+3. Установите зависимости:
+
+   ```bash
+   npm install
+   ```
+
+4. Запустите проект:
+
+   ```bash
+   npm run dev
+   ```
+
+Проект будет доступен по адресу: `http://localhost:5173/`.
+
+## Скриншоты
+
+### Страница корзины
+
+<img src='./src/assets/cart-page.png' />
+
+### Страница корзины
+
+<img src='./src/assets/order-page.png' />
+
+## API
+
+
+## Планы на будущее
+
+- Оформление страницы с карточкой продукта.
