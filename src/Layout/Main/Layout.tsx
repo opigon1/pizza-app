@@ -58,7 +58,7 @@ const Layout = () => {
                   alt='Иконка корзины'
                 />
                 Корзина
-                {cartItems.length > 0 && (
+                {cartItems?.length > 0 && (
                   <span className={s.cart_item_count}>
                     {cartItems.reduce((acc, item) => acc + item.count, 0)}
                   </span>

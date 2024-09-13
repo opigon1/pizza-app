@@ -5,14 +5,30 @@ import s from './Cart.module.css';
 import { AppDispatch, RootState } from '../../store/store';
 import { IProduct } from '../../interfaces/Propduct.interface';
 import { useEffect, useState } from 'react';
-import { getProductById } from '../../helper/api';
+import { getProductById, handleOrder } from '../../helper/api';
 import CartItem from '../../components/CartItem/CartItem';
-import { addToCart } from '../../store/cart.slice';
+import { clearCart } from '../../store/cart.slice';
+import { useNavigate } from 'react-router-dom';
+
+
+
+const DELIVERY = 169;
 
 const Cart = () => {
   const [cartProducts, setCardProducts] = useState<IProduct[]>([]);
   const items = useSelector((state: RootState) => state.cart.items);
-  
+  const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate()
+  const total = items
+    .map((i) => {
+      const product = cartProducts.find((p) => p.id === i.id);
+      if (!product) {
+        return 0;
+      }
+      return i.count * product.price;
+    })
+    .reduce((acc, i) => (acc += i), 0);
+
   useEffect(() => {
     loadAllProducts();
   }, [items]);
@@ -22,7 +38,11 @@ const Cart = () => {
     setCardProducts(res);
   };
 
-
+  const orderHandler = async () => {
+    handleOrder(items)
+    dispatch(clearCart())
+    navigate('/success')
+  }
 
   return (
     <div className={s.content}>
@@ -37,27 +57,27 @@ const Cart = () => {
       <div className={s['line']}>
         <div className={s['text']}>Итог</div>
         <div className={s['price']}>
-          &nbsp;<span>₽</span>
+          {total}&nbsp;<span>₽</span>
         </div>
       </div>
       <hr className={s['hr']} />
       <div className={s['line']}>
         <div className={s['text']}>Доставка</div>
         <div className={s['price']}>
-          &nbsp;<span>₽</span>
+          {DELIVERY}&nbsp;<span>₽</span>
         </div>
       </div>
       <hr className={s['hr']} />
       <div className={s['line']}>
         <div className={s['text']}>
-          Итог <span className={s['total-count']}></span>
+          Всего <span className={s['total-count']}>({items.length})</span>
         </div>
         <div className={s['price']}>
-          &nbsp;<span>₽</span>
+          {total + DELIVERY}&nbsp;<span>₽</span>
         </div>
       </div>
       <div className={s['checkout']}>
-        <Button appearence='large'>оформить</Button>
+        <Button appearence='large' onClick={orderHandler}>оформить</Button>
       </div>
     </div>
   );

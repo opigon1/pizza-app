@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { ICartItem } from '../interfaces/CartItem.interface';
 
 export const BASE_URL = 'https://purpleschool.ru/pizza-api-demo';
 
@@ -52,4 +53,19 @@ export const getUserProfile = async (jwt: string) => {
     },
   });
   return data;
+};
+
+export const handleOrder = async (cartItem: ICartItem[]) => {
+  const { data } = await axios.post(
+    `${BASE_URL}/order`,
+    {
+      product: cartItem,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      },
+    }
+  );
+  return data
 };
